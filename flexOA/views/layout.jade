@@ -1,3 +1,13 @@
+- var navis = ['whatever1', 'whatever2', 'whatever3']
+
+mixin list(activeID)
+  ul.nav.nav-sidebar
+    each val,index in navis
+      if index==activeID
+        a.active(href='#') val
+      else
+        a(href='#') val
+      
 doctype html
 html(lang="zh-CN")
   head
@@ -11,11 +21,7 @@ html(lang="zh-CN")
       .row
         .col-sm-3.col-md-2.sidebar
           block navigate
-            ul.nav.nav-sidebar
-              li
-                a(href='#') Whatever1
-              li
-                a(href='#') Whatever2
+            +list(0)
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
           block content
           block footer
