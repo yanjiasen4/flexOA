@@ -18,5 +18,5 @@
 ```
  npm start
 ```
-在浏览器中访问[localhost:3000](http://localhost:3000/)即可
+在浏览器中访问[localhost:1337](http://localhost:1337/)即可
 
