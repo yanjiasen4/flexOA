@@ -6,8 +6,8 @@
 
 ## 环境搭建
 
-使用框架：nodejs+express+mysql  
-前端渲染：jade+bootstrap  
+使用框架：nodejs + sails + mysql
+前端渲染：jade + bootstrap  
 本地运行前，请先确保您已经安装[Node.js](http://nodejs.org/)运行环境和[MySql](http://www.mysql.com/)数据库服务，并确保您已经安装了[npm](https://www.npmjs.com/)。进入代码目录，首先安装依赖
 
 ```
