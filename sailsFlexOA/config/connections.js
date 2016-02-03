@@ -43,16 +43,10 @@ module.exports.connections = {
   MysqlServer: {
     adapter: 'sails-mysql',
     host: 'localhost',
-<<<<<<< HEAD
-    user: 'root',
-    password: 'root',
-    database: 'temp'
-=======
     port: 3306,
     user: 'flexOA',
     password: 'flexOA',
     database: 'flexoa'
->>>>>>> origin/master
   },
 
   /***************************************************************************
