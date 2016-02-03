@@ -10,7 +10,10 @@
  */
 
 module.exports.models = {
-
+  migrate: 'safe',
+  'connection' : 'MysqlServer',
+  autoCreatedAt: false,
+  autoUpdatedAt: false
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *

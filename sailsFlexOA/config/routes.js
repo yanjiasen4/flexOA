@@ -34,7 +34,22 @@ module.exports.routes = {
 
   '/': {
     view: 'index'
+  },
+  '/test': {
+    view: 'login'
+  },
+  '/register': {
+    view: 'register'
+  },
+  'POST /register': 
+  {
+    view:'test'
+  },
+  'GET /register': 
+  {
+    view:'/'
   }
+
 
   /***************************************************************************
   *                                                                          *
