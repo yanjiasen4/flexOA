@@ -32,5 +32,3 @@ module.exports = {
 
   }
 }
-\ No newline at end of file
-}
