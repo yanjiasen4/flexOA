@@ -21,10 +21,9 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // connection: 'localDiskDb',
-<<<<<<< HEAD
+
   connection: 'MysqlServer',
-=======
->>>>>>> origin/master
+
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *

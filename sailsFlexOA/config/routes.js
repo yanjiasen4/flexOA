@@ -35,9 +35,8 @@ module.exports.routes = {
   '/': {
     view: 'index'
   },
-<<<<<<< HEAD
-=======
-  'get /register': 
+
+  'get /register':
   {
     view:'index'
   },
@@ -46,8 +45,6 @@ module.exports.routes = {
     view: 'login'
   },
   'post /login': 'UserController.register'
-
->>>>>>> origin/master
 
   /***************************************************************************
   *                                                                          *
@@ -58,9 +55,4 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /register': { view: 'login'},
-  'get /login': { view: 'login'},
-
-  'post /register': 'UserController.register',
-  'post /login': 'UserController.login'
 };
