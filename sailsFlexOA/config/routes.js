@@ -35,20 +35,15 @@ module.exports.routes = {
   '/': {
     view: 'index'
   },
-  '/test': {
+  'get /register': 
+  {
+    view:'index'
+  },
+  'post /register': 'UserController.register',
+  'get /login': {
     view: 'login'
   },
-  '/register': {
-    view: 'register'
-  },
-  'POST /register': 
-  {
-    view:'test'
-  },
-  'GET /register': 
-  {
-    view:'/'
-  }
+  'post /login': 'UserController.register'
 
 
   /***************************************************************************
