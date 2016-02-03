@@ -3,45 +3,42 @@
  */
 
  module.exports = {
-   login: function (req, res) {
+   test: function(req,res){
+                   return res.redirect('/');
+     var user = new Object();
+     user.username='test';
+     user.password='test';
+     user.realname='test';
+   //User.create(user);
 
-    // See `api/responses/login.js`
-    return res.login({
-       username: req.param('username'),
-       password: req.param('password'),
-       successRedirect: '/',
-       invalidRedirect: '/login'
-     });
+       User.create(user).exec(function createCB(err, created){
+           if(err){
+              // 如果有误，返回错误
+              console.error('fafafa');
+               res.view('/',{err:err});
+           }else{
+               // 否则，将新创建的用户登录
+                   return res.redirect('/');
+           }
+       });
    },
+   register: function(req,res){
+       //return res.redirect('/');
+       var user = req.allParams();
+       console.error('fafafa');
+       //console.error(user);
 
-   register: function (req, res) {
+       User.create(user).exec(function createCB(err, created){
+           if(err){
+              // 如果有误，返回错误
+              console.error('nonono');
+               res.view('/',{err:err});
+           }else{
+               // 否则，将新创建的用户登录
+                   return res.redirect('/');
+           }
+       });
 
-
-     // Attempt to signup a user using the provided parameters
-     User.signup({
-       username: req.param('username'),
-       password: req.param('password')
-     }, function (err, user) {
-       // res.negotiate() will determine if this is a validation error
-       // or some kind of unexpected server error, then call `res.badRequest()`
-       // or `res.serverError()` accordingly.
-       if (err) return res.negotiate(err);
-
-
-       // Go ahead and log this user in as well.
-       // We do this by "remembering" the user in the session.
-       // Subsequent requests from this user agent will have `req.session.me` set.
-       req.session.me = user.id;
-
-       // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
-       // send a 200 response letting the user agent know the signup was successful.
-       if (req.wantsJSON) {
-         return res.ok('Signup successful!');
-       }
-
-       // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
-       return res.redirect('/index');
-     });
-   }
+   },
 
  };

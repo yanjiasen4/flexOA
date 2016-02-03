@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	div(id='content', class='main') 
+		form(id='user',action='/register',methed = 'post')
+			input(name='username',placeholder='请输入用户名',type='text')
+			input(name='username',placeholder='请输入密码',type='password')
+			button(type='submit', name='submit') 注册

@@ -10,7 +10,10 @@
  */
 
 module.exports.models = {
-
+  migrate: 'safe',
+  'connection' : 'MysqlServer',
+  autoCreatedAt: false,
+  autoUpdatedAt: false
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *
@@ -18,7 +21,10 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // connection: 'localDiskDb',
+<<<<<<< HEAD
   connection: 'MysqlServer',
+=======
+>>>>>>> origin/master
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *
@@ -27,6 +33,5 @@ module.exports.models = {
   * See http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html  *
   *                                                                          *
   ***************************************************************************/
-  migrate: 'alter'
 
 };
