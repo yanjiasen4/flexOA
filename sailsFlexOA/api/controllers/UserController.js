@@ -9,24 +9,21 @@
      user.password='test';
      user.realname='test';
    //User.create(user);
-              console.error('fafafa');
+     console.error('fafafa');
 
-       User.create(user).exec(function createCB(err, created){
-           if(err){
-             // 如果有误，返回错误
-             console.error('fafafa');
-             res.view('/',{err:err});
-           }else{
-             // 否则，将新创建的用户登录
-             return res.redirect('/');
-           }
-       });
+     User.create(user).exec(function createCB(err, created){
+       if(err){
+         // 如果有误，返回错误
+         console.error('fafafa');
+         res.view('/',{err:err});
+         }else{
+           // 否则，将新创建的用户登录
+           return res.redirect('/');
+         }
+     });
    },
    register: function(req,res){
-       //return res.redirect('/');
        var user = req.allParams();
-       //console.error('fafafa');
-       //console.error(user);
 
        User.create(user).exec(function createCB(err, created){
            if(err){
@@ -38,6 +35,7 @@
               },'register');
            }else{
               // 否则，将新创建的用户登录
+              req.session.me = created;
               return res.redirect('/');
            }
        });
@@ -56,12 +54,9 @@
         console.error('attempt login');
         if(found.length)
         {
-          console.error('We found '+found.username);
-          req.session.me = found.userID;
-          return res.ok({
-            succ: 1,
-            message: '大成功了'
-          },'login');
+          console.error('We found '+found[0].username);
+          req.session.me = found[0];
+          return res.redirect('/');
         }
         else
         {

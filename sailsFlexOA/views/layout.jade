@@ -51,7 +51,7 @@ html(lang="zh-CN")
               li.dropdown.dropdown-user
                 a.dropdown-toggle(href='javascript:;', data-toggle='dropdown', data-close-others='true', data-hover='dropdown')
                   img.img-circle(alt='', src='/images/default_avatar.png')
-                  span.username.username-hide-on-mobile username
+                  span.username.username-hide-on-mobile= session.me.username
                   i.fa.fa-angle-down
                 ul.dropdown-menu.dropdown-menu-default
                   li
