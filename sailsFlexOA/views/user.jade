@@ -1,0 +1,135 @@
+extends layout
+
+block content
+  .theme-pannel.hidden-xs.hidden-sm
+  .page-bar
+    ul.page-breadcrumb
+      li
+        a(href='/') 首页
+        i.fa.fa-circle
+      li
+        span 账号
+  h3.page-title 账号
+    small 个人信息
+  .profile
+    .tabbable-line.tabbable-full-width
+      ul.nav.nav-tabs
+        li.active
+          a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
+        li
+          a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
+        li
+          a(aria-expanded='false', href='#tab_1_6', data-toggle='tab') 帮助
+      .tab-content
+        .tab-pane.active(id='tab_1_1')
+          .row
+            .col-md-3
+              ul.list-unstyled.profile-nav
+                li
+                  img.img-responsive.pic-bordered(alt='', src='#{session.me.avatar}')
+                  a.profile-edit(href='#') edit
+                li
+                  a(href='#')更换头像
+            .col-md-9
+              .row
+                .col-md-8.profile-info
+                  h1.font-green.sbold.uppercase= session.me.username
+                .col-md-4
+              .tabbable-line.tabbable-custom-profile
+                ul.nav.nav-tabs
+                  li.active
+                    a(aria-expanded='true', href='#tab_1_11', data-toggle='tab') 工作日志
+                  li
+                    a(aria-expanded='true', href='#tab_1_22', data-toggle='tab') 消息
+                .tab-content
+                  .tab-pane.active(id='tab_1_11')
+                    .protlet-body
+                      table.table.table-striped.table-bordered.table-advance.table-hover
+                        thead
+                          tr
+                            th 
+                              i.fa.fa-briefcase 项目
+                            th.hidden-xs
+                              i.fa.fa-question 内容
+                            th
+                              i.fa.fa-bookmark 进度
+                            th
+                         tbody
+                           tr
+                             td 项目1
+                             td.hidden-xs 项目描述
+                             td 原材料审批
+                             td a.btn.btn-sm.grey-salsa.btn-outlin(href='#')详细
+                           tr
+                             td 项目2
+                             td.hidden-xs 项目描述
+                             td 原材料审批
+                             td a.btn.btn-sm.grey-salsa.btn-outlin(href='#')详细
+                  .tab-pane(id='tab_1_22')
+                    .tab-pane.active(id='tab_1_1_1')
+                      .slimScrollDiv(style='width: auto; height: 290px; overflow: hidden; position:relative')
+                        .scroller(style='width:auto; height:290px; overflow:hidden;', data-initialized='1', data-height:290px, data-rail-visibel='1', data-always-visible='1')
+                          ul.feeds
+                            li
+                              .coll
+                                .cont
+                                  .cont-col1
+                                    .label.label-success
+                                      i.fa.fa-bell-o
+                                  .cont-col2
+                                    .desc 你有一项未完成的工作
+                              .col2
+                                .date 2分钟前
+        .tab-pane(id='tab_1_3')
+          .row.profile-account
+            .col-md-3
+              ul.ver-inline-menu.tabbable.margin-bottom-10
+                li.active
+                  a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
+                    i.fa.fa-cog 个人信息
+                  span.after
+                li
+                  a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
+                    i.fa.fa-picture-o 更换头像
+                li
+                  a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                    i.fa.fa-lock 更改密码
+            .col-md-9
+              .tab-content
+                .tab-pane(id='tab_1-1')
+                .tab-pane(id='tab_2-2')
+                  p 请选择一张您的工作照上传
+                  form(role='form', action='#', method="post")
+                    .form-group
+                      .fileinput-new.thumbnail(style='width:200px; height:150px;')
+                        img(alt='', src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
+                      .fileinput-preview.fileinput-exists.thumbnail(style='line-height:10px; max-height:150px; max-width:200px;')
+                      div
+                        span.btn.default.btn-file
+                          span.fileinput-new 选择图片
+                          span.fileinput-exists 更换
+                          input(name='imgUpload', type='hidden', value='')
+                          input(name='', type='file')
+                        a.btn.default.fileinput-exists(href='javascript:;', data-dismiss='fileinput') 撤销
+                    .margin-top-10
+                      a.btn.green(href='javascript:form.submit();') 提交
+                      a.btn.default(href='#') 取消
+                .tab-pane(id='tab_3-3')
+                  form(action='', method='post')
+                    .form-group
+                      label.control-label 当前密码
+                      input.form-control(type='password')
+                    .form-group
+                      label.control-label 新密码
+                      input.form-control(type='password')
+                    .form-group
+                      label.control-label 请再次输入新密码
+                      input.form-control(type='password')
+                    .margin-top-10
+                      a.btn.green(href='javascript:form.submit();') 确认更改
+                      a.btn.default(href='javascript:;') 取消更改
+        .tab-pane(id='tab_1_6')          
+                  
+          
+  
+      

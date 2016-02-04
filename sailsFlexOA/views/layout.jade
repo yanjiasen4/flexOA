@@ -55,7 +55,7 @@ html(lang="zh-CN")
                   i.fa.fa-angle-down
                 ul.dropdown-menu.dropdown-menu-default
                   li
-                    a(href='#') 
+                    a(href='/user') 
                       <i class='icon-user'></i> 个人设置
                   li
                     a(href='#')
@@ -94,7 +94,11 @@ html(lang="zh-CN")
                   li.nav-item.start.active.open
                     a.nav-link(href='/')
                       i.icon-graph
-                      span.title whatever3                   
+                      span.title whatever3    
+              li.nav-item
+                a.nav-link(href='/user')
+                  i.icon-user
+                  span.title 个人中心               
       .page-content-wrapper
         .page-content(style='min-height:1135px')
           block content-header

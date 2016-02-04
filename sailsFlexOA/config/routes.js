@@ -36,6 +36,10 @@ module.exports.routes = {
     view: 'index'
   },
 
+  'get /user': {
+    view: 'user'
+  },
+
   '/test': 'UserController.test',
   'get /register':
   {
