@@ -50,7 +50,23 @@ html(lang="zh-CN")
             ul.nav.navbar-nav.pull-right
               li.dropdown.dropdown-user
                 a.dropdown-toggle(href='javascript:;', data-toggle='dropdown', data-close-others='true', data-hover='dropdown')
+                  img.img-circle(alt='', src='/images/default_avatar.png')
                   span.username.username-hide-on-mobile username
+                  i.fa.fa-angle-down
+                ul.dropdown-menu.dropdown-menu-default
+                  li
+                    a(href='#') 
+                      <i class='icon-user'></i> 个人设置
+                  li
+                    a(href='#')
+                      <i class='icon-calendar'></i> 我的日程
+                  li
+                    a(href='#')
+                      <i class='icon-rocket'></i> 我的工作
+                  li.divider
+                  li
+                    a(href='#')
+                      <i class='icon-key'></i> 登出              
       .clearfix
     .page-container
       .page-sidebar-wrapper
@@ -79,7 +95,6 @@ html(lang="zh-CN")
                     a.nav-link(href='/')
                       i.icon-graph
                       span.title whatever3                   
-      //  +list(0)
       .page-content-wrapper
         .page-content(style='min-height:1135px')
           block content-header
