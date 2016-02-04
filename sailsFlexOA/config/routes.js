@@ -35,6 +35,7 @@ module.exports.routes = {
   '/': {
     view: 'index'
   },
+
   '/test': 'UserController.test',
   'get /register':
   {
@@ -42,7 +43,8 @@ module.exports.routes = {
   },
   'post /register': 'UserController.register',
   'get /login': 'UserController.beforelogin',
-  'post /login': 'UserController.login'
+  'post /login': 'UserController.login',
+  'get /logout': 'UserController.logout'
 
   /***************************************************************************
   *                                                                          *

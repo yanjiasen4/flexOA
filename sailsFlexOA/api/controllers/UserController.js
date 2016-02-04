@@ -13,12 +13,12 @@
 
        User.create(user).exec(function createCB(err, created){
            if(err){
-              // 如果有误，返回错误
-              console.error('fafafa');
-               res.view('/',{err:err});
+             // 如果有误，返回错误
+             console.error('fafafa');
+             res.view('/',{err:err});
            }else{
-               // 否则，将新创建的用户登录
-                   return res.redirect('/');
+             // 否则，将新创建的用户登录
+             return res.redirect('/');
            }
        });
    },
@@ -31,49 +31,52 @@
        User.create(user).exec(function createCB(err, created){
            if(err){
               // 如果有误，返回错误
-              console.error('重复的用户名');
-               //res.view('/',{err:err});
-               return res.redirect('/');
+              console.error(err);
+              //res.view('/',{err:err});
+              return res.ok({
+                error: 1
+              },'register');
            }else{
-               // 否则，将新创建的用户登录
-                   return res.redirect('/');
+              // 否则，将新创建的用户登录
+              return res.redirect('/');
            }
        });
 
    },
 
    beforelogin: function(req,res){
-      //return res.redirect('/');
       var user = req.allParams();
-      //console.error('fafafa');
-      //console.error(user);
       return res.ok({
         message: '成功了'
       },'login');
-
    },
    login: function(req,res){
-      //return res.redirect('/');
-      //var user = req.allParams();
-      //console.error('fafafa');
-      //console.error(user);
       var user = req.allParams();
       User.find(user).exec(function findCB(err, found){
+        console.error('attempt login');
         if(found.length)
         {
           console.error('We found '+found.username);
+          req.session.me = found.userID;
           return res.ok({
+            succ: 1,
             message: '大成功了'
           },'login');
         }
         else
         {
-          console.error('不知道');
+          console.error('失败了');
           return res.ok({
-            message: '失败了成功了'
+            error: 1,
+            message: '你个非洲人'
           },'login');
         }
       });
-
    },
+   logout: function(req,res) {
+     console.error(req.session.me+'用户登出成功!');
+     req.session.me = null;
+     return res.redirect('login');
+   },
+
  };
