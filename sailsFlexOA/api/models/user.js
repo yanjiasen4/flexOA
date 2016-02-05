@@ -35,8 +35,10 @@ module.exports = {
       defaultsTo: -1
     },
 
+    // user avatar pathname
     avatar: {
       type: 'string'
     }
+
   }
 }
