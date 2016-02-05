@@ -20,6 +20,7 @@
          }
      });
    },
+
    register: function(req,res){
        var user = req.allParams();
 
@@ -81,15 +82,51 @@
    uploadAvatar: function(req,res) {
      console.error('uploading...');
      req.file('avatar').upload({
-       dirname: '../public/images'
+       maxBytes: 10000000
      }, function whenDone(err, uploadFiles) {
        if (err) return res.serverError(err);
        if (uploadFiles.length === 0) {
          return res.badRequest('No filw was uploaded', 'errorPage/400');
        }
-       console.error("upload avatar success!");
-       return res.ok({rc: 1, message: '头像上传成功', hasOpt: '1', optIndex: '1'}, 'user');
+       User.update(req.session.me, {
+         avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
+         avatarFd:  uploadFiles[0].fd
+       })
+       .exec(function (err){
+         if (err) return res.negotiate(err);
+         console.error("upload avatar success!");
+         return res.ok({rc: 1, message: '头像上传成功', hasOpt: '1', optIndex: '1'}, 'user');
+       })
      });
-   }
+   },
 
- };
+   // GET /user/avatar/:id
+   avatar: function (req, res){
+
+     req.validate({
+       id: 'string'
+     });
+
+     User.findOne(req.param('id')).exec(function (err, user){
+       if (err) return res.negotiate(err);
+       if (!user) return res.notFound();
+
+       // User has no avatar image uploaded.
+       // (should have never have hit this endpoint and used the default image)
+       if (!user.avatarFd) {
+         return res.notFound();
+       }
+
+       var SkipperDisk = require('skipper-disk');
+       var fileAdapter = SkipperDisk();
+
+       // Stream the file down
+       fileAdapter.read(user.avatarFd)
+       .on('error', function (err){
+         return res.serverError(err);
+       })
+       .pipe(res);
+    });
+  }
+
+};

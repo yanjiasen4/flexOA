@@ -35,7 +35,10 @@ module.exports = {
       defaultsTo: -1
     },
 
-    avatar: {
+    avatarUrl: {
+      type: 'string'
+    },
+    avatarFd: {
       type: 'string'
     }
 
