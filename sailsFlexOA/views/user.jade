@@ -1,23 +1,35 @@
 extends layout
 
-block content
-  .theme-pannel.hidden-xs.hidden-sm
+block content-header
+  .theme-panel.hidden-xs.hidden-sm
   .page-bar
     ul.page-breadcrumb
       li
-        a(href='/') 首页
+        a(href='#') 首页
         i.fa.fa-circle
       li
-        span 账号
-  h3.page-title 账号
-    small 个人信息
+        span 用户
+    .page-toolbar
+      .pull-right.tooltips.btn.btn-sm(id='dashboard-report-range', data-original-title='更改设定日期', data-container='body', data-placement='bottom')
+        i.icon-calendar
+        span.thin.uppercase.hidden-xs= date
+        i.fa.fa-angle-down
+ h3.page-title= title
+   small= titleIntro
+block content
   .profile
     .tabbable-line.tabbable-full-width
       ul.nav.nav-tabs
-        li.active
-          a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
-        li
-          a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
+        if !hasOpt
+          li.active
+            a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
+          li
+            a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
+        else
+          li
+            a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
+          li.active
+            a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
         li
           a(aria-expanded='false', href='#tab_1_6', data-toggle='tab') 帮助
       .tab-content
@@ -86,33 +98,54 @@ block content
           .row.profile-account
             .col-md-3
               ul.ver-inline-menu.tabbable.margin-bottom-10
-                li.active
-                  a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
-                    <i class='fa fa-cog'></i> 个人信息
-                  span.after
-                li
-                  a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
-                    <i class='fa fa-picture-o'></i> 更换头像
-                li
-                  a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
-                    <i class='fa fa-lock'></i> 更改密码
+                if !hasOpt
+                  li.active
+                    a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
+                      <i class='fa fa-cog'></i> 个人信息
+                    span.after
+                  li
+                    a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
+                      <i class='fa fa-picture-o'></i> 更换头像
+                  li
+                    a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                      <i class='fa fa-lock'></i> 更改密码
+                else
+                  li
+                    a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
+                      <i class='fa fa-cog'></i> 个人信息
+                    span.after
+                  if optIndex == 1
+                    li.active
+                      a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
+                        <i class='fa fa-picture-o'></i> 更换头像
+                    li
+                      a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                        <i class='fa fa-lock'></i> 更改密码
+                  if optIndex == 2
+                    li
+                      a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
+                        <i class='fa fa-picture-o'></i> 更换头像
+                    li.active
+                      a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                        <i class='fa fa-lock'></i> 更改密码
             .col-md-9
               .tab-content
                 .tab-pane(id='tab_1-1')
                 .tab-pane(id='tab_2-2')
                   p 请选择一张您的工作照上传
-                  form(role='form', action='#', method="post")
+                  form(role='form', name='form', action='/uploadAvatar', method="post", enctype="multipart/form-data")
                     .form-group
-                      .fileinput-new.thumbnail(style='width:200px; height:150px;')
-                        img(alt='', src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
-                      .fileinput-preview.fileinput-exists.thumbnail(style='line-height:10px; max-height:150px; max-width:200px;')
-                      div
-                        span.btn.default.btn-file
-                          span.fileinput-new 选择图片
-                          span.fileinput-exists 更换
-                          input(name='imgUpload', type='hidden', value='')
-                          input(name='', type='file')
-                        a.btn.default.fileinput-exists(href='javascript:;', data-dismiss='fileinput') 撤销
+                      .fileinput.fileinput-exists(data-provides='fileinput')
+                        .fileinput-new.thumbnail(style='width:200px; height:150px;')
+                          img(alt='', src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
+                        .fileinput-preview.fileinput-exists.thumbnail(style='line-height:10px; max-height:150px; max-width:200px;')
+                        div
+                          span.btn.default.btn-file
+                            span.fileinput-new 选择图片
+                            span.fileinput-exists 更换
+                            //input(name='...', type='hidden', value='avatar')
+                            input(name='avatar', type='file')
+                          a.btn.default.fileinput-exists(href='javascript:;', data-dismiss='fileinput') 撤销
                     .margin-top-10
                       a.btn.green(href='javascript:form.submit();') 提交
                       a.btn.default(href='#') 取消

@@ -46,7 +46,8 @@ module.exports.routes = {
   'post /register': 'UserController.register',
   'get /login': 'UserController.beforelogin',
   'post /login': 'UserController.login',
-  'get /logout': 'UserController.logout'
+  'get /logout': 'UserController.logout',
+  'post /uploadAvatar': 'UserController.uploadAvatar'
 
   /***************************************************************************
   *                                                                          *

@@ -8,13 +8,11 @@
      user.username='test';
      user.password='test';
      user.realname='test';
-   //User.create(user);
-     console.error('fafafa');
 
      User.create(user).exec(function createCB(err, created){
        if(err){
          // 如果有误，返回错误
-         console.error('fafafa');
+
          res.view('/',{err:err});
          }else{
            // 否则，将新创建的用户登录
@@ -77,6 +75,21 @@
    //@ binding policies/hasLogged
    setting: function(req,res) {
      return res.view('user');
+   },
+
+   // POST /uploadAvatar
+   uploadAvatar: function(req,res) {
+     console.error('uploading...');
+     req.file('avatar').upload({
+       dirname: '../public/images'
+     }, function whenDone(err, uploadFiles) {
+       if (err) return res.serverError(err);
+       if (uploadFiles.length === 0) {
+         return res.badRequest('No filw was uploaded', 'errorPage/400');
+       }
+       console.error("upload avatar success!");
+       return res.ok({rc: 1, message: '头像上传成功', hasOpt: '1', optIndex: '1'}, 'user');
+     });
    }
 
  };
