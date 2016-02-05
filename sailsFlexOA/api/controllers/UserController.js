@@ -101,7 +101,7 @@
    },
 
    // GET /user/avatar/:id
-   avatar: function (req, res){
+  avatar: function (req, res){
 
      req.validate({
        id: 'string'
@@ -127,6 +127,36 @@
        })
        .pipe(res);
     });
+  },
+  changePassword: function (req, res){
+     console.error('开始改了');
+    var user = req.session.me;
+    var oldPassword = req.param('oldPassword');
+    var newPassword = req.param('newPassword');
+    var newConfirmedPassword = req.param('newConfirmedPassword');
+    if(user.password == oldPassword)
+    {
+      if(newConfirmedPassword == newPassword)
+      {
+        User.update(req.session.me,{password: newPassword})
+       .exec(function (err){
+         if (err) return res.negotiate(err);
+         console.error("修改成功!");
+       });
+        user.password=newPassword;
+        return res.ok({rc: 1, message: '密码修改成功', hasOpt: '1', optIndex: '2'}, 'user');
+      }
+      else
+      {
+     console.error('确认错误');
+        return res.ok({rc: 0, message: '确认密码错误', hasOpt: '1', optIndex: '2'}, 'user');
+      }
+    }
+    else
+    {
+     console.error('当前密码错误');
+        return res.ok({rc: 0, message: '当前密码错误', hasOpt: '1', optIndex: '2'}, 'user');
+    }
   }
 
 };

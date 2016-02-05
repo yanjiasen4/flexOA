@@ -48,7 +48,8 @@ module.exports.routes = {
   'post /login': 'UserController.login',
   'get /logout': 'UserController.logout',
   'post /uploadAvatar': 'UserController.uploadAvatar',
-  'get /user/avatar/:id': 'UserController.avatar'
+  'get /user/avatar/:id': 'UserController.avatar',
+  'post /changePassword': 'UserController.changePassword',
 
   /***************************************************************************
   *                                                                          *
