@@ -33,6 +33,10 @@ module.exports = {
     workerID: {
       type: 'integer',
       defaultsTo: -1
+    },
+
+    avatar: {
+      type: 'string'
     }
 
   }
