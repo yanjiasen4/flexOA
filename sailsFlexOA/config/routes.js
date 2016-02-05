@@ -36,9 +36,7 @@ module.exports.routes = {
     view: 'index'
   },
 
-  'get /user': {
-    view: 'user'
-  },
+  'get /user': 'UserController.setting',
 
   '/test': 'UserController.test',
   'get /register':

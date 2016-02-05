@@ -74,4 +74,9 @@
      return res.redirect('login');
    },
 
+   //@ binding policies/hasLogged
+   setting: function(req,res) {
+     return res.view('user');
+   }
+
  };

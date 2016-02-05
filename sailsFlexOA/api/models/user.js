@@ -10,7 +10,7 @@ module.exports = {
 
   attributes: {
     userID: {
-      type: 'integer',    
+      type: 'integer',
       primaryKey: true,
       autoIncrement: true,
       unique: true
@@ -33,6 +33,11 @@ module.exports = {
     workerID: {
       type: 'integer',
       defaultsTo: -1
+    },
+
+    // user avatar pathname
+    avatar: {
+      type: 'string'
     }
 
   }
