@@ -36,10 +36,12 @@ module.exports = {
     },
 
     avatarUrl: {
-      type: 'string'
+      type: 'string',
+      size: '100'
     },
     avatarFd: {
-      type: 'string'
+      type: 'string',
+      size: '255'
     }
 
   }

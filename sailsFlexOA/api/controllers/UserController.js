@@ -75,7 +75,7 @@
 
    //@ binding policies/hasLogged
    setting: function(req,res) {
-     return res.view('user');
+     return res.view('user', {data: ''});
    },
 
    // POST /uploadAvatar
@@ -89,13 +89,13 @@
          return res.badRequest('No filw was uploaded', 'errorPage/400');
        }
        User.update(req.session.me, {
-         avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
+         avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me.userID),
          avatarFd:  uploadFiles[0].fd
        })
        .exec(function (err){
          if (err) return res.negotiate(err);
          console.error("upload avatar success!");
-         return res.ok({rc: 1, message: '头像上传成功', hasOpt: '1', optIndex: '1'}, 'user');
+         return res.ok({rc: 1, message: '头像上传成功', hasOpt: 1, optIndex: 2}, 'user');
        })
      });
    },
@@ -106,8 +106,11 @@
      req.validate({
        id: 'string'
      });
-
-     User.findOne(req.param('id')).exec(function (err, user){
+     console.error(req.param('id'));
+     User.findOne({
+       userID: req.param('id')
+     }).exec(function (err, user){
+       console.error('wat?');
        if (err) return res.negotiate(err);
        if (!user) return res.notFound();
 

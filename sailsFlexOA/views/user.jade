@@ -14,26 +14,28 @@ block content-header
         i.icon-calendar
         span.thin.uppercase.hidden-xs= date
         i.fa.fa-angle-down
- h3.page-title= title
-   small= titleIntro
+ h3.page-title= hasOpt
+   small= optIndex
 block content
   .profile
     .tabbable-line.tabbable-full-width
       ul.nav.nav-tabs
-        if !hasOpt
+        if !data.hasOpt
           li.active
             a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
           li
             a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
         else
           li
-            a(aria-expanded='true', href='#tab_1_1', data-toggle='tab') 概况
+            a(aria-expanded='false', href='#tab_1_1', data-toggle='tab') 概况
           li.active
-            a(aria-expanded='false', href='#tab_1_3', data-toggle='tab') 设置
+            a(aria-expanded='true', href='#tab_1_3', data-toggle='tab') 设置
         li
           a(aria-expanded='false', href='#tab_1_6', data-toggle='tab') 帮助
       .tab-content
-        .tab-pane.active(id='tab_1_1')
+        - var st1 = (data.hasOpt)? 'tab-pane' : 'tab-pane active'
+        - var st2 = (data.hasOpt)? 'tab-pane active' : 'tab-pane'
+        div(class='#{st1}', id='tab_1_1')
           .row
             .col-md-3
               ul.list-unstyled.profile-nav
@@ -94,11 +96,11 @@ block content
                                     .desc 你有一项未完成的工作
                               .col2
                                 .date 2分钟前
-        .tab-pane(id='tab_1_3')
+        div(class='#{st2}', id='tab_1_3')
           .row.profile-account
             .col-md-3
               ul.ver-inline-menu.tabbable.margin-bottom-10
-                if !hasOpt
+                if !data.hasOpt
                   li.active
                     a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
                       <i class='fa fa-cog'></i> 个人信息
@@ -107,21 +109,21 @@ block content
                     a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
                       <i class='fa fa-picture-o'></i> 更换头像
                   li
-                    a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                    a(aria-expanded='false', href='#tab_3-3', data-toggle='tab')
                       <i class='fa fa-lock'></i> 更改密码
                 else
                   li
                     a(aria-expanded='true', href='#tab_1-1', data-toggle='tab')
                       <i class='fa fa-cog'></i> 个人信息
                     span.after
-                  if optIndex == 1
+                  if data.optIndex == 1
                     li.active
-                      a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
+                      a(aria-expanded='true', href='#tab_2-2', data-toggle='tab')
                         <i class='fa fa-picture-o'></i> 更换头像
                     li
-                      a(aria-expanded='true', href='#tab_3-3', data-toggle='tab')
+                      a(aria-expanded='false', href='#tab_3-3', data-toggle='tab')
                         <i class='fa fa-lock'></i> 更改密码
-                  if optIndex == 2
+                  if data.optIndex == 2
                     li
                       a(aria-expanded='false', href='#tab_2-2', data-toggle='tab')
                         <i class='fa fa-picture-o'></i> 更换头像
@@ -130,8 +132,11 @@ block content
                         <i class='fa fa-lock'></i> 更改密码
             .col-md-9
               .tab-content
-                .tab-pane(id='tab_1-1')
-                .tab-pane(id='tab_2-2')
+                - var st11 = (data.optIndex==1)? 'tab-pane active' : 'tab-pane'
+                - var st12 = (data.optIndex==2)? 'tab-pane active' : 'tab-pane'
+                - var st13 = (data.optIndex==3)? 'tab-pane active' : 'tab-pane'
+                div(class='#{st11}', id='tab_1-1')
+                div(class='#{st12}', id='tab_2-2')
                   p 请选择一张您的工作照上传
                   form(role='form', name='form', action='/uploadAvatar', method="post", enctype="multipart/form-data")
                     .form-group
@@ -149,7 +154,7 @@ block content
                     .margin-top-10
                       a.btn.green(href='javascript:form.submit();') 提交
                       a.btn.default(href='#') 取消
-                .tab-pane(id='tab_3-3')
+                div(class='#{st13}', id='tab_3-3')
                   form(action='', method='post')
                     .form-group
                       label.control-label 当前密码
