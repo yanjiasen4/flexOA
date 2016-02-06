@@ -154,19 +154,24 @@ block content
                     .margin-top-10
                       a.btn.green(href='javascript:form.submit();') 提交
                       a.btn.default(href='#') 取消
+<<<<<<< HEAD
                 div(class='#{st13}', id='tab_3-3')
                   form(action='', method='post')
+=======
+                .tab-pane(id='tab_3-3')
+                  form(role='form',action='/changePassword', method='post',name='form1')
+>>>>>>> origin/master
                     .form-group
                       label.control-label 当前密码
-                      input.form-control(type='password')
+                      input.form-control(type='password',name='oldPassword')
                     .form-group
                       label.control-label 新密码
-                      input.form-control(type='password')
+                      input.form-control(type='password',name='newPassword')
                     .form-group
                       label.control-label 请再次输入新密码
-                      input.form-control(type='password')
+                      input.form-control(type='password',name='newConfirmedPassword')
                     .margin-top-10
-                      a.btn.green(href='javascript:form.submit();') 确认更改
+                      a.btn.green(href='javascript:form1.submit();') 确认更改
                       a.btn.default(href='javascript:;') 取消更改
         .tab-pane(id='tab_1_6')          
                   

@@ -49,6 +49,7 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   UserController: {
-    setting : 'hasLogged'
+    setting : 'hasLogged',
+    changePassword : 'hasLogged'
   }
 };
