@@ -59,7 +59,7 @@ module.exports = function notFound (data, options) {
 
   // If no second argument provided, try to serve the default view,
   // but fall back to sending JSON(P) if any errors occur.
-  else return res.view('404', { data: data }, function (err, html) {
+  else return res.view('errorPage/404', { data: data }, function (err, html) {
 
     // If a view error occured, fall back to JSON(P).
     if (err) {
@@ -80,4 +80,3 @@ module.exports = function notFound (data, options) {
   });
 
 };
-

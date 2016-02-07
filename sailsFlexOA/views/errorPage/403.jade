@@ -1,0 +1,22 @@
+extends ../layout
+
+block content-header
+  .theme-panel.hidden-xs.hidden-sm
+  .page-bar
+    ul.page-breadcrumb
+      li
+        a(href='#') 首页
+        i.fa.fa-circle
+      li
+        span 400
+    .page-toolbar
+      .pull-right.tooltips.btn.btn-sm(id='dashboard-report-range', data-original-title='更改设定日期', data-container='body', data-placement='bottom')
+        i.icon-calendar
+        span.thin.uppercase.hidden-xs= date
+        i.fa.fa-angle-down
+ h3.page-title= title
+   small= titleIntro
+block content
+  h1 HTTP 403 
+  h1 Forbidden
+  p= data
