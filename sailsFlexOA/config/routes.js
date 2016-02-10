@@ -39,10 +39,6 @@ module.exports.routes = {
   'get /user': 'UserController.setting',
 
   '/test': 'UserController.test',
-  'get /register':
-  {
-    view:'index'
-  },
   'post /register': 'UserController.register',
   'get /login': 'UserController.beforelogin',
   'post /login': 'UserController.login',

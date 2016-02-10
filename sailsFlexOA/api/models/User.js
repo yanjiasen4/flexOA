@@ -31,8 +31,7 @@ module.exports = {
     },
 
     workerID: {
-      type: 'integer',
-      defaultsTo: -1
+      type: 'integer'
     },
 
     avatarUrl: {
