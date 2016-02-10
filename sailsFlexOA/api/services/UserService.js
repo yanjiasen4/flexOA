@@ -1,11 +1,14 @@
 module.exports = {
-  createUser(user){
+  createUser: function(user,req,res){
     User.create(user).exec(function createCB(err, created){
       if(err){
         console.error(err);
-        return null;
+        return res.ok({
+          error: 1
+        },'register');
       }else{
-        return created;
+        req.session.me = created;
+        return res.redirect('/');
       }
     });
   }
