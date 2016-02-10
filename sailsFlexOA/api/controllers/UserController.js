@@ -21,31 +21,6 @@ module.exports = {
   register: function(req,res){
     var user = req.allParams();
     var created = UserService.createUser(user,req,res);
-/*
-    console.error(created);
-    if(created == null)
-    {
-        return res.ok({
-          error: 1
-        },'login');
-    }
-    else
-    {
-        req.session.me = created;
-        return res.redirect('/');
-    }
-    User.create(user).exec(function createCB(err, created){
-      if(err){
-        console.error(err);
-        return res.ok({
-          error: 1
-        },'register');
-      }else{
-        req.session.me = created;
-        return res.redirect('/');
-      }
-    });
-*/
   },
 
   beforelogin: function(req,res){
