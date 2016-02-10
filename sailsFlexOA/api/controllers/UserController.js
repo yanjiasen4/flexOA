@@ -20,7 +20,7 @@ module.exports = {
 
   register: function(req,res){
     var user = req.allParams();
-    var created = UserService.createUser(user,req,res);
+    UserService.createUser(user,req,res);
   },
 
   beforelogin: function(req,res){
