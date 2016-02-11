@@ -60,6 +60,12 @@ module.exports = {
     return res.view('user', {data: ''});
   },
 
+  //@ binding policies/hasLogged, policies/hasAuthority
+  manage: function(req,res) {
+    console.error('!!!!!');
+    return res.view('staff');
+  },
+
   // POST /uploadAvatar
   uploadAvatar: function(req,res) {
     console.error('uploading...');

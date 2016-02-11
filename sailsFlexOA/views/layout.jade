@@ -36,6 +36,7 @@ html(lang="zh-CN")
       link(rel='stylesheet', href='/global/css/components-rounded.min.css', type='text/css')
       link(rel='stylesheet', href='/global/css/plugins.min.css', type='text/css')
       // END THEME GLOBAL STYLES
+    block page_styles
     block theme_layout
       // BEGIN THEME LAYOUT STYLES
       link(rel='stylesheet', href='/layouts/layout/css/layout.min.css', type='text/css')
@@ -58,7 +59,7 @@ html(lang="zh-CN")
                   if !session.me.avatarUrl
                     img.img-circle(alt='', src='/images/default_avatar.png')
                   else
-                    img.img-circle(alt='', src='/user/avatar/#{session.me.userID}')
+                    img.img-circle(alt='', src='#{session.me.avatarUrl}')
                   span.username.username-hide-on-mobile= session.me.username
                   i.fa.fa-angle-down
                 ul.dropdown-menu.dropdown-menu-default
@@ -106,7 +107,13 @@ html(lang="zh-CN")
               li.nav-item
                 a.nav-link(href='/user')
                   i.icon-user
-                  span.title 个人中心               
+                  span.title 个人中心    
+                  span.arrow
+              li.nav-item
+                a.nav-link(href='/manage')
+                  i.icon-briefcase
+                  span.title 公司管理
+                  span.arrow           
       .page-content-wrapper
         .page-content(style='min-height:1135px')
           block content-header

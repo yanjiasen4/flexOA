@@ -1,5 +1,8 @@
 extends layout
 
+block page_styles
+  link(rel='stylesheet', href='pages/css/profile-2.min.css', type='text/css')
+
 block content-header
   .theme-panel.hidden-xs.hidden-sm
   .page-bar
@@ -40,8 +43,7 @@ block content
             .col-md-3
               ul.list-unstyled.profile-nav
                 li
-                  img.img-responsive.pic-bordered(alt='', src='#{session.me.avatar}')
-                  a.profile-edit(href='#') edit
+                  img.img-responsive.pic-bordered.img-fixed-size(alt='', src='#{session.me.avatarUrl}')
                 li
                   a(href='#') 更换头像
             .col-md-9
