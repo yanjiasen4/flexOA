@@ -46,7 +46,10 @@ module.exports.routes = {
   'post /uploadAvatar': 'UserController.uploadAvatar',
   'get /user/avatar/:id': 'UserController.avatar',
   'post /changePassword': 'UserController.changePassword',
-  '/manage': 'UserController.manage'
+  '/manage': 'UserController.manage',
+  // test
+  'post /manage/deleteWorker': 'CompanyController.test',
+  'post /manage/updateWorker': 'CompanyController.test'
 
   /***************************************************************************
   *                                                                          *

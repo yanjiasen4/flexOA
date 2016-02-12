@@ -20,8 +20,8 @@ var TableDatatablesEditable = function () {
             jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
             jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
             //jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
-            jqTds[3].innerHTML = '<a class="edit" href="">Save</a>';
-            jqTds[4].innerHTML = '<a class="cancel" href="">Cancel</a>';
+            jqTds[3].innerHTML = '<a class="edit" href="">保存</a>';
+            jqTds[4].innerHTML = '<a class="cancel" href="">取消</a>';
         }
 
         function saveRow(oTable, nRow) {
@@ -30,8 +30,8 @@ var TableDatatablesEditable = function () {
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
           //  oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 3, false);
-            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 4, false);
+            oTable.fnUpdate('<a class="edit" href="">编辑</a>', nRow, 3, false);
+            oTable.fnUpdate('<a class="delete" href="">删除</a>', nRow, 4, false);
             oTable.fnDraw();
         }
 
@@ -41,7 +41,7 @@ var TableDatatablesEditable = function () {
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
           //  oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 3, false);
+            oTable.fnUpdate('<a class="edit" href="">编辑 </a>', nRow, 3, false);
             oTable.fnDraw();
         }
 
@@ -68,7 +68,9 @@ var TableDatatablesEditable = function () {
             "pageLength": 5,
 
             "language": {
-                "lengthMenu": " _MENU_ 记录"
+                "lengthMenu": " _MENU_ 记录",
+                "search": "搜索",
+                "info": "第 _START_ 到第 _END_ 条记录，总计 _TOTAL_ 条"
             },
             "columnDefs": [{ // set default column settings
                 'orderable': true,
@@ -123,6 +125,13 @@ var TableDatatablesEditable = function () {
             var nRow = $(this).parents('tr')[0];
             oTable.fnDeleteRow(nRow);
             //alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+            $.ajax({
+              url: '/manage/deleteWorker',
+              type: 'post',
+              data: {
+                workerID: nRow.id
+              }
+            })
         });
 
         table.on('click', '.cancel', function (e) {
@@ -148,11 +157,20 @@ var TableDatatablesEditable = function () {
                 restoreRow(oTable, nEditing);
                 editRow(oTable, nRow);
                 nEditing = nRow;
-            } else if (nEditing == nRow && this.innerHTML == "Save") {
+            } else if (nEditing == nRow && this.innerHTML == "保存") {
                 /* Editing this row and want to save it */
                 saveRow(oTable, nEditing);
                 nEditing = null;
                 //alert("Updated! Do not forget to do some ajax to sync with backend :)");
+                var aData = oTable.fnGetData(nRow);
+                $.ajax({
+                  url: '/manage/updateWorker',
+                  type: 'post',
+                  data: {
+                    workerID: nRow.id,
+                    title: aData[2]
+                  }
+                })
             } else {
                 /* No edit in progress - let's start one */
                 editRow(oTable, nRow);

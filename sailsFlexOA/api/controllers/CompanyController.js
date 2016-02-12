@@ -8,5 +8,9 @@ module.exports = {
         return 0;
       }
     });
-  }
-}
+  },
+
+  test: function(req,res){
+    console.error("You success!");
+  },
+};
