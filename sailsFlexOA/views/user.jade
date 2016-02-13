@@ -142,7 +142,7 @@ block content
                   p 请选择一张您的工作照上传
                   form(role='form', name='form', action='/uploadAvatar', method="post", enctype="multipart/form-data")
                     .form-group
-                      .fileinput.fileinput-exists(data-provides='fileinput')
+                      .fileinput.fileinput-new(data-provides='fileinput')
                         .fileinput-new.thumbnail(style='width:200px; height:150px;')
                           img(alt='', src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
                         .fileinput-preview.fileinput-exists.thumbnail(style='line-height:10px; max-height:150px; max-width:200px;')

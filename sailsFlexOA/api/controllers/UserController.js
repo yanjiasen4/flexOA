@@ -62,7 +62,6 @@ module.exports = {
 
   //@ binding policies/hasLogged, policies/hasAuthority
   manage: function(req,res) {
-    console.error('!!!!!');
     return res.view('staff');
   },
 
@@ -76,7 +75,8 @@ module.exports = {
       if (uploadFiles.length === 0) {
         return res.badRequest('No filw was uploaded', 'errorPage/400');
       }
-      User.update(req.session.me, {
+      console.error(req.session.userID);
+      User.update({userID: req.session.me.userID}, {
         avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me.userID),
         avatarFd:uploadFiles[0].fd
       })
