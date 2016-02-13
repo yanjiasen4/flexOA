@@ -1,12 +1,1 @@
-.form-center {
-  text-align: center;
-}
-
-i .cnfix {
-  padding-right: 2px;
-}
-
-img .img-fixed-size {
-  height: 340.38px;
-  width:  340.38px;
-}
+.form-center{text-align:center}i .cnfix{padding-right:2px}.img-fixed-size{width:100%!important}
