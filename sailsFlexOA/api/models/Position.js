@@ -12,6 +12,10 @@ module.exports = {
       type: 'string',
       minLength:1,
       maxLength:200
+    },
+    Authority: {
+      type: 'integer',
+      defaultsTo: 5
     }
   }
 }
