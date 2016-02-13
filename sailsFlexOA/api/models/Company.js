@@ -10,8 +10,7 @@ module.exports = {
     },
     companyName: {
       type: 'string',
-      minLength:1,
-      maxLength:50
+      size: 100
     },
 
     ownerID: {
@@ -19,8 +18,7 @@ module.exports = {
     },
     ownerName:{
       type: 'string',
-      minLength:1,
-      maxLength:20
+      size: 20
     }
   }
 }

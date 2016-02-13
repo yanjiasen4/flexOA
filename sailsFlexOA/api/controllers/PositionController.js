@@ -13,22 +13,22 @@ module.exports = {
     var positionID = req.param('positionID');
     var positionName = req.param('positionName');
     Position.update({positionID: positionID},{positionName: positionName})
-    .exec(function(err)){
+    .exec(function(err){
       if(err) 
         return -1;
       else
         return 0;
-    }
+    });
   },
 
   deletePosition: function(req,res){
     var positionID = req.param('positionID');
     Position.destroy({positionID: positionID})
-    .exec(function(err)){
+    .exec(function(err){
       if(err) 
         return -1;
       else
         return 0;
-    }
+    });
   },
 };

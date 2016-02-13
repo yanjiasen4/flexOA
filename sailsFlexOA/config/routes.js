@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'index'
   },
 
+  //user
   'get /user': 'UserController.setting',
 
   '/test': 'UserController.test',
@@ -47,6 +48,12 @@ module.exports.routes = {
   'get /user/avatar/:id': 'UserController.avatar',
   'post /changePassword': 'UserController.changePassword',
   '/manage': 'UserController.manage',
+
+  //position
+  'get /staff': {
+    view: 'staff'
+  },
+
   // test
   'post /manage/deleteWorker': 'CompanyController.test',
   'post /manage/updateWorker': 'CompanyController.test'

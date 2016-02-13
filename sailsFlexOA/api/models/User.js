@@ -26,8 +26,7 @@ module.exports = {
 
     realname: {
       type: 'string',
-      minLength:1,
-      maxLength:20
+      size: 20
     },
 
     positionID: {
@@ -36,11 +35,11 @@ module.exports = {
 
     avatarUrl: {
       type: 'string',
-      size: '100'
+      size: 100
     },
     avatarFd: {
       type: 'string',
-      size: '255'
+      size: 255
     }
 
   }

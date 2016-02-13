@@ -10,12 +10,11 @@ module.exports = {
     },
     positionName: {
       type: 'string',
-      minLength:1,
-      maxLength:200
+      size: 100
     },
     Authority: {
       type: 'integer',
-      defaultsTo: 5
+      defaultsTo: 3
     }
   }
 }
