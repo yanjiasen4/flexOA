@@ -20,4 +20,15 @@ module.exports = {
         return 0;
     }
   },
+
+  deletePosition: function(req,res){
+    var positionID = req.param('positionID');
+    Position.destroy({positionID: positionID})
+    .exec(function(err)){
+      if(err) 
+        return -1;
+      else
+        return 0;
+    }
+  },
 };

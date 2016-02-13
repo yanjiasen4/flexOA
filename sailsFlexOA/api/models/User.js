@@ -30,7 +30,7 @@ module.exports = {
       maxLength:20
     },
 
-    workerID: {
+    positionID: {
       type: 'integer'
     },
 
