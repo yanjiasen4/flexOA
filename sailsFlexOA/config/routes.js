@@ -54,6 +54,10 @@ module.exports.routes = {
     view: 'staff'
   },
 
+  'get /project': {
+    view: 'project'
+  },
+
   // test
   'post /manage/deleteWorker': 'CompanyController.test',
   'post /manage/updateWorker': 'CompanyController.test'

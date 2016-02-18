@@ -180,7 +180,8 @@ html(lang="zh-CN")
       script(src="/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js", type="text/javascript")
       // END PAGE LEVEL PLUGINS
     // BEGIN THEME GLOBAL SCRIPTS
-    script(src="/global/scripts/app.min.js", type="text/javascript")
+    block global_scripts
+      script(src="/global/scripts/app.min.js", type="text/javascript")
     // END THEME GLOBAL SCRIPTS
     block page_scripts
       // BEGIN PAGE LEVEL SCRIPTS
