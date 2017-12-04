@@ -13,7 +13,7 @@
 ```
  npm install
 ```
-e7e5181f8540f00645843a31abd16bf83e11745d
+
 然后开启服务器
 ```
  npm start
